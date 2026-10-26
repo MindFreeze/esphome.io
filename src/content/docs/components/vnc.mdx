@@ -120,8 +120,9 @@ on_...:
 
 - **x** (**Required**, int, [templatable](/automations/templates/)): The horizontal position.
 - **y** (**Required**, int, [templatable](/automations/templates/)): The vertical position.
-- **buttons** (_Optional_, [templatable](/automations/templates/)): The buttons held down, as a list of names
-  (`left`, `middle`, `right`, `wheel_up`, `wheel_down`) or a number. Defaults to none, which releases all
+- **buttons** (_Optional_, list or int, [templatable](/automations/templates/)): The buttons held down, as a list
+  of names (`left`, `middle`, `right`, `wheel_up`, `wheel_down`) or a number. A lambda returns the number: the sum
+  of `1` left, `2` middle, `4` right, `8` wheel up and `16` wheel down. Defaults to none, which releases all
   buttons. A click is one event with the button and one without it. A scroll step is one event with
   `wheel_up` or `wheel_down` and one without.
 - **id** (_Optional_, [ID](/guides/configuration-types/#id)): The VNC client to use.
@@ -210,7 +211,7 @@ binary_sensor:
 ## M5Paper Example
 
 A dashboard in portrait, with touch, the rocker switch for scrolling and for fetching the whole screen again,
-and actions that Home Assistant can call.
+and an action that Home Assistant can call.
 
 ```yaml
 esp32:
