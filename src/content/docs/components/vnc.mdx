@@ -144,10 +144,10 @@ on_...:
       action: up
 ```
 
-- **key** (**Required**, [templatable](/automations/templates/)): The key: a single character such as `a`, an X11
-  key name such as `Return`, `Escape`, `Tab`, `BackSpace`, `Up`, `Down`, `Left`, `Right`, `Page_Up`, `Page_Down`,
-  `Home`, `End`, `Delete`, `F1` to `F12`, `Shift_L`, `Control_L` or `Alt_L`, or a key number (keysym). Names are
-  not case sensitive.
+- **key** (**Required**, string or int, [templatable](/automations/templates/)): The key: a single character such
+  as `a`, an X11 key name such as `Return`, `Escape`, `Tab`, `BackSpace`, `Up`, `Down`, `Left`, `Right`, `Page_Up`,
+  `Page_Down`, `Home`, `End`, `Delete`, `F1` to `F12`, `Shift_L`, `Control_L` or `Alt_L`, or a key number (keysym).
+  Names are not case sensitive. A lambda returns the keysym as a number, for example `0xff0d` for `Return`.
 - **action** (_Optional_, string): `press` sends the key down and up. `down` or `up` sends only one of them, for
   holding keys such as Shift. Defaults to `press`.
 - **id** (_Optional_, [ID](/guides/configuration-types/#id)): The VNC client to use.
