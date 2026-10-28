@@ -112,7 +112,8 @@ on_...:
   - vnc.send_pointer:
       x: 270
       y: 480
-      buttons: [left]
+      buttons:
+        - left
   - vnc.send_pointer:
       x: 270
       y: 480
@@ -285,8 +286,14 @@ binary_sensor:
       number: GPIO37
       inverted: true
     on_press:
-      - vnc.send_pointer: {x: 270, y: 480, buttons: [wheel_up]}
-      - vnc.send_pointer: {x: 270, y: 480}
+      - vnc.send_pointer:
+          x: 270
+          y: 480
+          buttons:
+            - wheel_up
+      - vnc.send_pointer:
+          x: 270
+          y: 480
   - platform: gpio
     name: Rocker push
     pin:
@@ -300,8 +307,14 @@ binary_sensor:
       number: GPIO39
       inverted: true
     on_press:
-      - vnc.send_pointer: {x: 270, y: 480, buttons: [wheel_down]}
-      - vnc.send_pointer: {x: 270, y: 480}
+      - vnc.send_pointer:
+          x: 270
+          y: 480
+          buttons:
+            - wheel_down
+      - vnc.send_pointer:
+          x: 270
+          y: 480
 ```
 
 ## Troubleshooting
