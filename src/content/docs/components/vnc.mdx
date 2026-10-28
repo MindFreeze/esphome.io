@@ -38,7 +38,8 @@ is larger, only its top-left part is shown.
 - **reconnect_interval** (_Optional_, [Time](/guides/configuration-types/#time)): How long to wait before the
   first new connection attempt after a failure. The wait doubles with each further failure, up to 60 seconds or
   `reconnect_interval`, whichever is longer. Defaults to `5s`. After a configuration problem, for example when the
-  server is not a VNC server or asks for a password that is not set, the client waits 5 minutes instead.
+  server is not a VNC server or asks for a password that is not set, the client waits 5 minutes instead. After a
+  wrong password it stops retrying until the device restarts or `vnc.connect` runs.
 - **update_delay** (_Optional_, [Time](/guides/configuration-types/#time)): How long the picture must stay
   unchanged before the display refreshes. This turns an animation into one refresh that shows where the
   animation ended. Defaults to `200ms`.
@@ -128,10 +129,17 @@ on_...:
 connects again. It also retries after a wrong password.
 
 ```yaml
+# Before deep sleep
 on_...:
   - vnc.disconnect:
+
+# After fixing the password on the server
+on_...:
   - vnc.connect:
 ```
+
+- **id** (_Optional_, [ID](/guides/configuration-types/#id)): The `vnc` client to connect or disconnect. Only
+  needed if there is more than one.
 
 ## Conditions
 
